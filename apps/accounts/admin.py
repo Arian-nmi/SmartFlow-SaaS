@@ -6,6 +6,8 @@ from .models import CustomUser
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
     list_display = ('email', 'full_name', 'is_active', 'is_staff')
+    ordering = ('email',)
+    search_fields = ('email', 'phone_number', 'full_name')
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
         ('Personal info', {'fields': ('full_name', 'phone_number')}),
@@ -16,7 +18,7 @@ class CustomUserAdmin(UserAdmin):
         (None, {
             'classes': ('wide',),
             'fields': ('email', 'password1', 'password2', 'is_active', 'is_staff')}
-         ),
+        ),
     )
 
 admin.site.register(CustomUser, CustomUserAdmin)
