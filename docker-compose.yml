@@ -23,6 +23,18 @@ services:
     ports:
       - "6379:6379"
 
+  celery:
+    build: .
+    container_name: smartflow_celery
+    command: celery -A config worker -l info
+    depends_on:
+      - redis
+      - web
+    volumes:
+      - .:/code
+    env_file:
+      - .env
+
   web:
     build: .
     container_name: smartflow_web
