@@ -14,9 +14,8 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 SECRET_KEY = config('SECRET_KEY', default="&(dj-smartflow-secret_key)$")
 DEBUG = config("DEBUG", cast=bool, default=True)
 TIME_ZONE = config("TIME_ZONE", default="Asia/Tehran")
-CELERY_BROKER_URL = 'redis://smartflow_redis:6379/0'
-CELERY_RESULT_BACKEND = 'redis://smartflow_redis:6379/0'
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+CELERY_BROKER_URL = config('CELERY_BROKER_URL', default='redis://smartflow_redis:6379/0')
+CELERY_RESULT_BACKEND = config('CELERY_RESULT_BACKEND', default='redis://smartflow_redis:6379/0')
 ALLOWED_HOSTS = []
 
 APPLICATIONS = [
