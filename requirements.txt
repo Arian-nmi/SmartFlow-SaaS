@@ -1,9 +1,11 @@
 Django
 djangorestframework
 djangorestframework-simplejwt
+django-redis
 psycopg2
 psycopg2-binary
 redis
 django-environ
 python-decouple
 Pillow
+celery

@@ -14,7 +14,8 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 SECRET_KEY = config('SECRET_KEY', default="&(dj-smartflow-secret_key)$")
 DEBUG = config("DEBUG", cast=bool, default=True)
 TIME_ZONE = config("TIME_ZONE", default="Asia/Tehran")
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+CELERY_BROKER_URL = config('CELERY_BROKER_URL', default='redis://smartflow_redis:6379/0')
+CELERY_RESULT_BACKEND = config('CELERY_RESULT_BACKEND', default='redis://smartflow_redis:6379/0')
 ALLOWED_HOSTS = []
 
 APPLICATIONS = [
@@ -96,4 +97,14 @@ REST_FRAMEWORK = {
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+}
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://smartflow_redis:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
 }
