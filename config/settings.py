@@ -20,6 +20,8 @@ ALLOWED_HOSTS = []
 
 APPLICATIONS = [
     'accounts',
+    'appointments',
+    'businesses',
 ]
 
 INSTALLED_APPS = [
