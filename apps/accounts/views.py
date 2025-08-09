@@ -1,8 +1,8 @@
 import random
-from django.utils import timezone
 from django.core.cache import cache
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.permissions import AllowAny
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
 from .models import CustomUser
@@ -11,6 +11,8 @@ from .tasks import send_otp_sms
 
 
 class SendOTPView(APIView):
+    permission_classes = [AllowAny]
+
     def post(self, request):
         serializer = SendOTPSerializer(data=request.data)
         if serializer.is_valid():
@@ -25,6 +27,8 @@ class SendOTPView(APIView):
 
 
 class VerifyOTPView(APIView):
+    permission_classes = [AllowAny]
+
     def post(self, request):
         serializer = VerifyOTPSerializer(data=request.data)
         if serializer.is_valid():
