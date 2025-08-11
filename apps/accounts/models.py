@@ -39,4 +39,4 @@ class CustomUser(AbstractUser, PermissionsMixin):
     objects = UserManager()
 
     def __str__(self):
-        return self.email
+        return self.email or self.phone_number or f"User {self.id}"
