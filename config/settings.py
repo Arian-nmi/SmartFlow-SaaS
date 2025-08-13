@@ -16,12 +16,14 @@ DEBUG = config("DEBUG", cast=bool, default=True)
 TIME_ZONE = config("TIME_ZONE", default="Asia/Tehran")
 CELERY_BROKER_URL = config('CELERY_BROKER_URL', default='redis://smartflow_redis:6379/0')
 CELERY_RESULT_BACKEND = config('CELERY_RESULT_BACKEND', default='redis://smartflow_redis:6379/0')
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ALLOWED_HOSTS = []
 
 APPLICATIONS = [
     'accounts',
     'appointments',
     'businesses',
+    'notifications',
 ]
 
 INSTALLED_APPS = [
