@@ -9,3 +9,5 @@ redis
 django-environ
 python-decouple
 celery
+reportlab
+openpyxl

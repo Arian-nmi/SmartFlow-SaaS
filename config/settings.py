@@ -1,11 +1,13 @@
 from pathlib import Path
 from decouple import config
 from datetime import timedelta
+import os
 
 
 USE_TZ = True
 USE_I18N = True
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
 LANGUAGE_CODE = 'en-us'
 ROOT_URLCONF = 'config.urls'
 WSGI_APPLICATION = 'config.wsgi.application'
@@ -17,6 +19,8 @@ TIME_ZONE = config("TIME_ZONE", default="Asia/Tehran")
 CELERY_BROKER_URL = config('CELERY_BROKER_URL', default='redis://smartflow_redis:6379/0')
 CELERY_RESULT_BACKEND = config('CELERY_RESULT_BACKEND', default='redis://smartflow_redis:6379/0')
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 ALLOWED_HOSTS = []
 
 APPLICATIONS = [
@@ -24,6 +28,7 @@ APPLICATIONS = [
     'appointments',
     'businesses',
     'notifications',
+    'reports',
 ]
 
 INSTALLED_APPS = [
@@ -49,7 +54,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
 
 TEMPLATES = [
     {
