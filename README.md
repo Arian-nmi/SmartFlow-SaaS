@@ -1,4 +1,5 @@
 🌀 SmartFlow-SaaS
+----------------------------
 SmartFlow is a SaaS-based appointment and business management system built with Django and Celery.
 It provides core features for managing users, businesses, appointments, notifications, and reporting with support for asynchronous processing.
 
