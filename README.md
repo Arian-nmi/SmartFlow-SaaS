@@ -8,7 +8,7 @@ It provides core features for managing users, businesses, appointments, notifica
 👤 User Accounts & Authentication
 
     User registration & login with JWT Authentication
-    OTP code verification (via Email/SMS, Celery-powered tasks)
+    OTP code verification (via Celery-powered tasks)
     Role-based system (Admin, Business Owner, Customer)
 
 🏢 Business Management
@@ -26,9 +26,7 @@ It provides core features for managing users, businesses, appointments, notifica
 🔔 Notifications
 
     Celery used for asynchronous notifications (background tasks)
-    Email/SMS sending (mock system, ready to connect to real providers)
     Notification logs saved in DB (pending, sent, failed)
-    Event-driven notifications (example: booking an appointment → auto email)
 
 📑 Reports
 
