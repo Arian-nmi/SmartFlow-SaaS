@@ -1,6 +1,7 @@
 from celery import shared_task
 from .models import Report
 from .services.appointment_report import get_appointment_report_data
+from .services.business_report import get_business_report_data
 from .exporters.pdf_exporter import export_report_to_pdf
 from .exporters.excel_exporter import export_report_to_excel
 from apps.notifications.models import NotificationLog
@@ -17,10 +18,14 @@ def generate_report_task(report_id):
 
         if report.report_type == Report.TYPE_APPOINTMENTS:
             data = get_appointment_report_data(report.filters)
+        elif report.report_type == Report.TYPE_BUSINESSES:
+            data = get_business_report_data(report.filters)
         else:
             data = []
 
         output_format = (report.filters or {}).get('format', 'pdf')
+
+        logger.warning(f"[CELERY] Data size: {len(data)} rows")
         if output_format == 'excel':
             export_report_to_excel(report, data)
         else:
