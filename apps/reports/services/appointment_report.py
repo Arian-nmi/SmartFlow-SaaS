@@ -3,7 +3,6 @@ from apps.appointments.models import Appointment
 def get_appointment_report_data(filters):
     qs = Appointment.objects.all()
 
-    # فیلتر تاریخ
     if filters:
         start = filters.get('date_from')
         end = filters.get('date_to')
